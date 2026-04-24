@@ -1,0 +1,122 @@
+.header {
+  width: 100%;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.header__logo {
+  max-width: 173px;
+  width: 100%;
+  max-height: 33px;
+}
+.header__bar {
+  max-width: 880px;
+  width: 100%;
+  padding: 45px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-bottom: 1px solid #545454;
+}
+.header__user-desktop {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.header__user-expanded,
+.header__menu-button {
+  display: none;
+}
+
+.header__logout {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  color: #a9a9a9;
+  background-color: #000000;
+  border: none;
+  text-decoration: none;
+  outline: none;
+  transition: opacity 0.2s ease;
+}
+.header__logout:hover {
+  text-decoration: underline;
+  opacity: 0.7;
+}
+.header__email {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  color: #fff;
+  background-color: #000000;
+  border: none;
+}
+.header__email:hover {
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 600px) {
+  .header {
+    border-bottom: none;
+  }
+
+  .header__bar {
+    max-width: 100%;
+    padding: 28px 27px;
+    justify-content: space-between;
+    overflow: visible;
+  }
+
+  .header__logo {
+    width: 126px;
+  }
+
+  .header__menu-button {
+    display: flex;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .header__menu-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .header__user-desktop {
+    display: none;
+  }
+
+  .header__user-expanded {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #000;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+    padding: 0;
+  }
+
+  .header__user-expanded_opened {
+    max-height: 150px;
+    padding: 40px 0 25px;
+    border-top: 1px solid #545454;
+  }
+
+  .header__logout_type_expanded {
+    font-size: 18px;
+    margin-top: 18px;
+  }
+}

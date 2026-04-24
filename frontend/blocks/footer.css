@@ -1,0 +1,19 @@
+.footer {
+  display: flex;
+  max-width: 880px;
+  width: 100%;
+  margin-bottom: 60px;
+}
+
+.footer__copyright {
+  font-size: 18px;
+  font-family: "Inter", sans-serif;
+  margin-top: 0;
+  font-weight: normal;
+  color: #545454;
+}
+@media (max-width: 900px) {
+  .footer {
+    justify-content: center;
+  }
+}

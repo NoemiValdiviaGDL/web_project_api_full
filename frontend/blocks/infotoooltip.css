@@ -1,0 +1,18 @@
+.popup__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  margin-top: 0px;
+  padding: 30px;
+  text-align: center;
+}
+
+.popup__tooltip-message {
+  margin-top: 20px;
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 900;
+  color: #000;
+}
