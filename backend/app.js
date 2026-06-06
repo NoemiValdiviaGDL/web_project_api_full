@@ -13,20 +13,11 @@ import {
 } from "./middlewares/validation.js";
 import { requestLogger, errorLogger } from "./middlewares/logger.js";
 import { auth } from "./middlewares/auth.js";
+
 dotenv.config();
-import cors from "cors";
 
 const { PORT = 3001 } = process.env;
-
 const app = express();
-
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-    methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
-    credentials: true,
-  }),
-);
 
 app.use(express.json());
 
@@ -36,6 +27,36 @@ app.use((req, res, next) => {
 });
 
 app.use(requestLogger);
+
+const allowedCors = [
+  "https://aroundNoemi.mooo.com",
+  "http://aroundNoemi.mooo.com",
+  "https://www.aroundNoemi.mooo.com",
+  "http://www.aroundNoemi.mooo.com",
+  "http://localhost:3000",
+  "http://localhost:5173",
+];
+
+app.use((req, res, next) => {
+  const { origin } = req.headers;
+  const { method } = req;
+  const requestHeaders = req.headers["access-control-request-headers"];
+
+  if (allowedCors.includes(origin)) {
+    res.header("Access-Control-Allow-Origin", origin);
+  }
+
+  if (method === "OPTIONS") {
+    res.header(
+      "Access-Control-Allow-Methods",
+      "GET,HEAD,PUT,PATCH,POST,DELETE",
+    );
+    res.header("Access-Control-Allow-Headers", requestHeaders);
+    return res.end();
+  }
+
+  next();
+});
 
 app.post("/signin", validateAuthentication, login);
 app.post("/signup", validateUserBody, createUser);
