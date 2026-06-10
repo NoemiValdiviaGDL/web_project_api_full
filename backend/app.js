@@ -27,16 +27,18 @@ app.use((req, res, next) => {
 });
 
 app.use(requestLogger);
-
 const allowedCors = [
   "https://aroundNoemi.mooo.com",
   "http://aroundNoemi.mooo.com",
   "https://www.aroundNoemi.mooo.com",
   "http://www.aroundNoemi.mooo.com",
+  "https://aroundnoemi.mooo.com",
+  "http://aroundnoemi.mooo.com",
+  "https://www.aroundnoemi.mooo.com",
+  "http://www.aroundnoemi.mooo.com",
   "http://localhost:3000",
   "http://localhost:5173",
 ];
-
 app.use((req, res, next) => {
   const { origin } = req.headers;
   const { method } = req;
